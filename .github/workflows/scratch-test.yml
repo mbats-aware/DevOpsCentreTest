@@ -2,8 +2,7 @@ name: Deploy to QA
 
 on: 
   pull_request:
-    types: 
-      -closed
+    types: [synchronize]
     
 jobs:
   pr_merged:
