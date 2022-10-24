@@ -2,14 +2,24 @@ name: Deploy to QA
 
 on: 
   pull_request:
-    types: 
-      -closed
+    types: [synchronize]
     
 jobs:
   pr_merged:
-    if: github.event.pull_request.merged == true
+    
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
+          
+      - name: 'Checkout source code'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          
+      - name: 'Read pull request'
+        env:
+          PR_BODY: ${{github.event.pull_request.body}}
+        run: |
+          echo $PR_BODY > ./pr_body.txt
