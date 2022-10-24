@@ -18,3 +18,9 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+          
+      - name: 'Read pull request'
+        env:
+          PR_BODY: ${{github.event.pull_request.body}}
+          run: |
+                  echo $PR_BODY > ./pr_body.txt
