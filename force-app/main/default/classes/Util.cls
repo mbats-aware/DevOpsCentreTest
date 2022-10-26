@@ -1,7 +1,5 @@
 public with sharing class Util {
     
-    // A comment for testing
-    
     public static List<EntityDefinition> getEntities(string criteria){
         string q = 'SELECT Id, DurableId, LastModifiedDate, LastModifiedById, QualifiedApiName, NamespacePrefix, DeveloperName, MasterLabel, Label, '
             + ' PluralLabel, DefaultCompactLayoutId, IsCustomizable, IsApexTriggerable, IsWorkflowEnabled, IsProcessEnabled, IsCompactLayoutable, DeploymentStatus, KeyPrefix, IsCustomSetting, '
