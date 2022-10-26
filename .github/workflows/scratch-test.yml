@@ -1,15 +1,16 @@
 name: Deploy to QA
 
 on: 
-  pull_request:
-    types: [closed]
-    paths:
-        - 'force-app/**'
+  workflow_dispatch
+  #pull_request:
+    #types: [closed]
+    #paths:
+        #- 'force-app/**'
     
 jobs:
   setup:
     name: Job Setup
-    if: github.event.pull_request.merged == true
+    #if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       # Now we install nodejs in the VM, and specify version 14
