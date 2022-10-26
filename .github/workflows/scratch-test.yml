@@ -6,7 +6,7 @@ on:
     
 jobs:
   pr_merged:
-  name: Pull Request Merged
+    name: Pull Request Merged
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
