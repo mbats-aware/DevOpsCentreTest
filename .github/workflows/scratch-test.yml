@@ -5,8 +5,8 @@ on:
     types: [closed]
     
 jobs:
-  pr_merged:
-    name: Pull Request Merged
+  setup:
+    name: Environment Setup
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
