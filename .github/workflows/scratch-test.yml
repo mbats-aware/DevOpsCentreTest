@@ -112,10 +112,10 @@ jobs:
       - name: 'Populate auth file with SFDX_URL secret of integration org'
         shell: bash
         run: |
-            echo ${{ secrets.SFDX_INTEGRATION_URL}} > ./SFDX_INTEGRATION_URL.txt
+            echo ${{ secrets.SCRATCH_ORG_URL}} > ./SCRATCH_ORG_URL.txt
       # Authenticate to org using the URL stored in the text file
       - name: 'Authenticate to Integration Org'
-        run: sfdx auth:sfdxurl:store -f ./SFDX_INTEGRATION_URL.txt -s -a integration
+        run: sfdx auth:sfdxurl:store -f ./SCRATCH_ORG_URL.txt -s -a scratch
 
       # We use SFDX Git Delta to create a directory with only the metadata that has changed.
       # this allows us to deploy only those changes, as opposed to deploying the entire branch. 
@@ -133,7 +133,7 @@ jobs:
       - name: 'Scan code'
         run: |
             cd changed-sources
-            sfdx scanner:run --format sarif --target './**/*.cls' --category "Design,Best Practices,Performance" --outfile 'apexScanResults.sarif'  
+            sfdx scanner:run --format sarif --target './**/*.cls' --category "Design,Best Practices,Performance,Code Style" --outfile 'apexScanResults.sarif'  
             cd ..
       # Now we upload the .sarif file as explained in the previous step
       - name: Upload SARIF file
